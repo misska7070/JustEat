@@ -6,11 +6,15 @@ A web application that fetches live restaurant data from the Just Eat API and di
 
 ## How to Run
 
-### Prerequisites
+### Option 1 — View Online
+The app is live and accessible at:
+👉 https://restaurantsaroundme.streamlit.app/
+
+### Option 2 — Run Locally
+
+**Prerequisites**
 - Python 3.8+
 - pip
-
-### Installation
 
 1. Clone the repository:
    ```bash
