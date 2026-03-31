@@ -23,13 +23,21 @@ fetch = st.button("🔍 Find Restaurants")
 # ============================================================
 def is_valid_uk_postcode(postcode):
     """Basic UK postcode format check — catches obvious non-UK or empty inputs."""
-    pattern = r"^[A-Z]{1,2}\d[A-Z\d]?\s?\d[A-Z]{2}$"
-    return bool(re.match(pattern, postcode.strip().upper()))
+    # Full postcode (e.g. RG5 4JG) or outward code only (e.g. RG1, EC4M)
+    full = r"^[A-Z]{1,2}\d[A-Z\d]?\s?\d[A-Z]{2}$"
+    partial = r"^[A-Z]{1,2}\d[A-Z\d]?$"
+    clean = postcode.strip().upper()
+    return bool(re.match(full, clean) or re.match(partial, clean))
  
 # ============================================================
 # Step 2: Fetch + parse data
 # ============================================================
 def fetch_restaurants(postcode):
+    """
+    Call the Just Eat API for a given UK postcode and return the first 10
+    restaurants, each with: name, cuisines, rating (number), and address.
+    Raises ValueError if no restaurants are found.
+    """
     clean_postcode = postcode.replace(" ", "")
     url = f"https://uk.api.just-eat.io/discovery/uk/restaurants/enriched/bypostcode/{clean_postcode}"
     headers = {
@@ -76,6 +84,7 @@ def fetch_restaurants(postcode):
 # Step 3: Display helpers
 # ============================================================
 def stars(rating):
+    """Convert a numeric rating to a visual star string (e.g. 3.5 → ⭐⭐⭐✨)."""
     full = int(rating)
     half = 1 if rating % 1 != 0 else 0
     return "⭐" * full + ("✨" if half else "")
@@ -151,5 +160,3 @@ if "restaurants" in st.session_state and st.session_state["restaurants"]:
                     st.markdown(f"### {stars(r['rating'])}")
                     st.markdown(f"**{r['rating']} / 5**")
                 st.divider()
- 
- 
