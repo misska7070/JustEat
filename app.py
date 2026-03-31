@@ -5,9 +5,9 @@ import re
 # ============================================================
 # Page config
 # ============================================================
-st.set_page_config(page_title="Just Eat Near Me 🍕", page_icon="🍔", layout="centered")
+st.set_page_config(page_title="Restaurants Near Me 🍕", page_icon="🍔", layout="centered")
  
-st.title("🍕 Just Eat Near Me")
+st.title("🍕 Restaurants Near Me")
 st.caption("Live data from the Just Eat API")
  
 # ============================================================
