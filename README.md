@@ -74,7 +74,7 @@ Enter any UK postcode (e.g. `EC4M 7RF`, `SW1A 1AA`, or just `RG1`) and click **F
 - Only the first 10 restaurants in the response are displayed, as per the brief
 - The postcode validation regex covers standard UK formats but is not exhaustive, so some edge-case valid postcodes may be rejected
 
-## Improvements I Would Make
+## Scope for improvements
 
 - **Unit tests** add tests for `fetch_restaurants()` and `is_valid_uk_postcode()` to verify data extraction logic and catch regressions if the API response structure changes
 - **Caching** use `st.cache_data` to cache API responses for the same postcode, avoiding redundant network calls within a session
