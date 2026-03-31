@@ -14,7 +14,7 @@ st.caption("Live data from the Just Eat API")
 # Step 1: Postcode input
 # ============================================================
 st.info("🇬🇧 This app uses the Just Eat UK API — please enter a valid UK postcode (e.g. RG5 4JG, EC4M 7RF).")
-postcode = st.text_input("Enter a UK postcode", value="RG5 4JG")
+postcode = st.text_input("Enter a UK postcode", value="CT1 2EH")
  
 fetch = st.button("🔍 Find Restaurants")
  
